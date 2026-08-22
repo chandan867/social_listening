@@ -409,14 +409,19 @@ def try_mcp_tool(tool: str, args: dict):
 
 def fetch_reddit_rss(subreddits_csv: str, dry_run: bool = False):
     posts, warns = [], []
-    subs = [s.strip() for s in subreddits_csv.split(",") if s.strip()]
+    all_subs = [s.strip() for s in subreddits_csv.split(",") if s.strip()]
+    if not all_subs:
+        return [], []
     # rotate a subset per cycle so each subreddit is fetched every N cycles (429 prevention)
-    n = max(1, int(getattr(C, "PACING", {}).get("subs_per_cycle", len(subs))))
-    if len(subs) > n:
+    n = max(1, int(getattr(C, "PACING", {}).get("subs_per_cycle", len(all_subs))))
+    total_subs = len(all_subs)
+    if total_subs > n:
         idx_path = DATA / ".rss_idx"
         start = int(idx_path.read_text().strip() or 0) if idx_path.exists() else 0
-        subs = [subs[(start + i) % len(subs)] for i in range(n)]
-        idx_path.write_text(str((start + n) % max(1, len(subs) )))
+        subs = [all_subs[(start + i) % total_subs] for i in range(n)]
+        idx_path.write_text(str((start + n) % total_subs))
+    else:
+        subs = all_subs
     ns = "{http://www.w3.org/2005/Atom}"
     for sub in subs:
         try:
@@ -982,8 +987,8 @@ def main():
                 warnings.append("intent classifier: LLM returned empty — degraded to keyword gate.")
         except Exception as ex:
             warnings.append(f"intent classifier failed ({ex}) — degraded to keyword gate.")
-    # annotate deduped with intent fields for capture + CSV
-    for p in deduped:
+    # annotate scored and deduped with intent fields for capture + CSV
+    for p in scored:
         obj = intent_map.get(p["id"], {})
         p["classifier"] = classifier_mode if obj else "keyword"
         p["icp"] = obj.get("icp","") if obj else ""

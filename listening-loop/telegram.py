@@ -10,7 +10,7 @@ MD = DATA / "digest.md"
 CSV = DATA / "leads.csv"
 
 def load_env():
-    for p in [HERE / ".env", HERE.parent / "Social-ops" / ".env"]:
+    for p in [HERE / ".env", HERE.parent / ".env", HERE.parent / "Social-ops" / ".env"]:
         if p.exists():
             for line in p.read_text().splitlines():
                 line=line.strip()

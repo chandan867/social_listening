@@ -25,6 +25,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 <plist version="1.0">
 <dict>
   <key>Label</key><string>com.social-listening.digest</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>/usr/local/bin:/opt/homebrew/bin:$HOME/.npm-global/bin:$PATH</string>
+    <key>HOME</key><string>$HOME</string>
+  </dict>
   <key>ProgramArguments</key><array>
     <string>$BASH_EXE</string>
     <string>$HERE/run.sh</string>
@@ -45,6 +50,11 @@ EOF
 <plist version="1.0">
 <dict>
   <key>Label</key><string>com.social-listening.daily</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>/usr/local/bin:/opt/homebrew/bin:$HOME/.npm-global/bin:$PATH</string>
+    <key>HOME</key><string>$HOME</string>
+  </dict>
   <key>ProgramArguments</key><array>
     <string>$PYTHON_EXE</string>
     <string>$HERE/daily.py</string>
