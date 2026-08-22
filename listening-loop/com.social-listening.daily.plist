@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!-- Use bash install-scheduler.sh to dynamically generate and load this plist with your exact system paths -->
+<dict>
+  <key>Label</key><string>com.social-listening.daily</string>
+  <key>ProgramArguments</key><array>
+    <string>/usr/bin/python3</string>
+    <string>daily.py</string>
+  </array>
+  <key>StartCalendarInterval</key><dict>
+    <key>Hour</key><integer>21</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+  <key>StandardOutPath</key><string>data/daily.log</string>
+  <key>StandardErrorPath</key><string>data/daily.log</string>
+</dict>
+</plist>

@@ -1,0 +1,15 @@
+[submodule "Social-ops"]
+	path = Social-ops
+	url = https://github.com/Owlseer-AI/Social-ops.git
+[submodule "snscrape"]
+	path = snscrape
+	url = https://github.com/JustAnotherArchivist/snscrape.git
+[submodule "Agent-Reach"]
+	path = Agent-Reach
+	url = https://github.com/Panniantong/Agent-Reach.git
+[submodule "reddit-universal-scraper"]
+	path = reddit-universal-scraper
+	url = https://github.com/ksanjeev284/reddit-universal-scraper.git
+[submodule "social-listening-agent"]
+	path = social-listening-agent
+	url = https://github.com/brightdata/social-listening-agent.git

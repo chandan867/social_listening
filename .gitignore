@@ -1,0 +1,49 @@
+# Environment & Secrets
+.env
+.env.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.venv*/
+
+# Node / JS
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Mac / OS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Logs & Playwright / Scratch
+*.log
+.playwright-mcp/
+
+# Listening Loop Runtime Data (Keep golden.jsonl and .gitkeep)
+listening-loop/data/capture.jsonl
+listening-loop/data/daily.json
+listening-loop/data/daily.md
+listening-loop/data/digest.json
+listening-loop/data/digest.md
+listening-loop/data/seen.json
+listening-loop/data/weekly.md
+listening-loop/data/leads.csv
+listening-loop/data/posts.csv
+listening-loop/data/.*idx*
+listening-loop/data/.fb*
+listening-loop/data/*.log
+
+# Social-ops runtime data
+Social-ops/data/cache/
+Social-ops/data/*.log
